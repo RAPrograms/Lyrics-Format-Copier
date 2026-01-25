@@ -1,10 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "Lyrics Format Copier",
   "version": "1.0",
+  
+  "name": "Lyrics Format Copier",
   "description": "Allows copying of lyrics from lots of websites with one click, without copying ui elements",
+
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": ["<all_urls>"],
+
   "action": {
     "default_popup": "ui/main.html",
     "default_icon": "icon.svg"
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://genius.com/*-lyrics"],
+      "js": ["/platforms/genius.js"]
+    }
+  ]
 }

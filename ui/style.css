@@ -1,28 +1,52 @@
+:root{
+    --primary-text-colour: white;
+    --secondary-text-colour: rgb(106, 114, 130);
+}
+
 *{
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text-colour);
     box-sizing: border-box;
     color-scheme: dark;
-    color: white;
     margin: 0;
 }
 
 body{
     font-family: "Space Grotesk", system-ui, sans-serif;
     background-color: rgb(26, 26, 26);
-    flex-direction: column;
+    height: 600px;
+    width: 400px;
 }
 
 body > *{
     padding: 20px;
 }
 
-body > header{
+
+
+/* ------- Layout -------- */
+
+body > :is(header, footer){
     border: 0px solid oklch(0.278 0.033 256.848);
-    border-bottom-width: 1px;
 }
 
-body, body > header{
+body,
+body > header,
+body > main,
+body > footer > a{
     display: flex;
+}
+
+body, body > main{
+    flex-direction: column;
+}
+
+
+
+/* ------- Header -------- */
+
+body > header{
+    border-bottom-width: 1px;
 }
 
 body > header{
@@ -41,4 +65,32 @@ body > header > img{
 body > header > h1{
     font-size: clamp(10px, 1rem, 16px);
     font-weight: bold;
+}
+
+
+
+/* -------- Body --------- */
+
+body > main{
+    flex-grow: 1;
+}
+
+
+
+/* ------- Footer -------- */
+
+body > footer{
+    border-top-width: 1px;
+}
+
+body > footer > a,
+body > footer > a > svg > path{
+    color: var(--secondary-text-colour) !important;
+}
+
+body > footer > a{
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    gap: 5px;
 }

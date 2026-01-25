@@ -137,7 +137,30 @@ body > form > button[type=submit]{
     border: none;
 }
 
+body > form{
+    gap: 20px;
+}
+
+body > form,
+body > form > section{
+    flex-direction: column;
+    display: flex;
+}
+
+body > form > section{
+    gap: 10px;
+}
+
+body > form > section > b{
+    font-size: 14px;
+}
+
 body > form .selector{
     display: flex;
     gap: 20px;
+}
+
+body > form .hint{
+    color: var(--secondary-text-colour);
+    font-size: small;
 }

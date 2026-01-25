@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Allows copying of lyrics from lots of websites with one click, without copying ui elements",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "ui/main.html",
     "default_icon": "icon.svg"
   }
 }

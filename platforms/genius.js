@@ -22,3 +22,4 @@ const data = new Promise((resolve, reject) => {
     resolve(lyrics)
 })
 
+callHome()

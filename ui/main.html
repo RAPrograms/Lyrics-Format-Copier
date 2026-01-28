@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" type="module" async defer></script>
+
+    <script src="option.js"></script>
+    <script src="main.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -12,33 +14,11 @@
       <h1>Lyrics Copier</h1>
     </header>
 
-    <form>
-      <section>
-        <b>Remove Metadata</b>
-        
-        <div class="selector">
-          <label>
-            <span>Off</span>
-            <input type="radio" name="remove_metadata" value="off" checked>
-          </label>
-
-          <label>
-            <span>On</span>
-            <input type="radio" name="remove_metadata" value="on">
-          </label>
-        </div>
-
-        <div class="hint">Removes content in brackets</div>
-      </section>
-
-      <button type="submit">
-        <!-- Icon sourced from Lucide.dev -->
-        <!-- Name: copy -->
-        <!-- Contributors: colebemis, csandman, ericfennis, danielbayley & jguddas -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-        Copy Lyrics
-      </button>
-    </form>
+    <main>
+      <div class="loader"></div>
+      <b>Loading...</b>
+      <p>Analyzing page for lyrics</p>
+    </main>
 
     <footer>
       <a href="https://github.com/RAPrograms/Lyrics-Format-Copier" target="_blank" aria-label="Created by RAPrograms">
@@ -50,5 +30,37 @@
         Created by RAPrograms
       </a>
     </footer>
+
+
+    <template>
+      <form>
+        <processing-option
+          data-title="Remove Metadata"
+          data-default="off"
+          data-name="remove_metadata"
+
+          off="Keeps infomation in brackets"
+          on="Removes infomation in brackets">
+        </processing-option>
+
+        <processing-option
+          data-title="Condense Lines"
+          data-default="off"
+          data-name="condense_lines"
+
+          off="Keeps full version of lyrics"
+          on="Reduces continuis duplicate lines to one with the amount">
+        </processing-option>
+      
+
+        <button type="submit">
+          <!-- Icon sourced from Lucide.dev -->
+          <!-- Name: copy -->
+          <!-- Contributors: colebemis, csandman, ericfennis, danielbayley & jguddas -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+          Copy Lyrics
+        </button>
+      </form>
+    </template>
   </body>
 </html>

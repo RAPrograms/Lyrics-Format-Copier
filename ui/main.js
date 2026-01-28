@@ -19,4 +19,19 @@ async function pageCall(functionName) {
   }
 }
 
-console.log(await pageCall("supported"))
+const pageSupported = new Promise(async(resolve) => 
+  resolve((await pageCall("supported")) != null))
+
+window.onload = async() => {
+  if(!(await pageSupported)){
+    document.querySelector("main > :nth-child(1)").setAttribute("class", "error-icon")
+    document.querySelector("main > :nth-child(2)").textContent = "Can't Parse This Page"
+    document.querySelector("main > :nth-child(3)").innerHTML = "We couldn't find any lyrics on this page. <br> Please make sure you're on a supported lyrics website."
+    return
+  }
+
+  
+  let temp = document.getElementsByTagName("template")[0];
+  let clone = temp.content.cloneNode(true);
+  document.querySelector("main").replaceWith(clone)
+};

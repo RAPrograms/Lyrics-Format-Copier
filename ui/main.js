@@ -19,6 +19,26 @@ async function pageCall(functionName) {
   }
 }
 
+async function processCopy(e){
+  e.preventDefault()
+
+  const lyrics = await pageCall("getContent")
+  const config = new FormData(e.target)
+
+  let output = ""
+  
+  for(let i=0; i<lyrics.length; i++){
+    const lyric = lyrics[i]
+    output += lyric + "\n"
+  }
+
+  try{
+    await navigator.clipboard.writeText(output)
+  }catch{
+    prompt("Unable to copy to clipboard\nPlease copy the following", output)
+  }
+}
+
 const pageLoaded = new Promise(async (resolve, reject) => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if(tab.status == "complete")
@@ -51,4 +71,6 @@ window.onload = async() => {
   let temp = document.getElementsByTagName("template")[0];
   let clone = temp.content.cloneNode(true);
   document.querySelector("main").replaceWith(clone)
+
+  document.querySelector("form").onsubmit = processCopy
 };

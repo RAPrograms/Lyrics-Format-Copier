@@ -19,8 +19,25 @@ async function pageCall(functionName) {
   }
 }
 
-const pageSupported = new Promise(async(resolve) => 
-  resolve((await pageCall("supported")) != null))
+const pageLoaded = new Promise(async (resolve, reject) => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if(tab.status == "complete")
+    resolve()
+
+  chrome.tabs.onUpdated.addListener(function listener(id, info) {
+    if(tab.id != id || info.status != 'complete')
+      return
+
+    chrome.tabs.onUpdated.removeListener(listener);
+    resolve()
+  });
+})
+
+const pageSupported = new Promise(async(resolve) =>{ 
+  await pageLoaded
+
+  resolve((await pageCall("supported")) != null)
+})
 
 window.onload = async() => {
   if(!(await pageSupported)){

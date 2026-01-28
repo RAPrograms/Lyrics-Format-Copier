@@ -1,4 +1,6 @@
-const data = new Promise((resolve, reject) => {
+"use strict"
+
+const data = new Promise(resolve => {
     const containors = document.querySelectorAll("#lyrics-root > [data-lyrics-container]")
     const lyrics = []
     let cache = ""
@@ -21,5 +23,3 @@ const data = new Promise((resolve, reject) => {
     lyrics.push(cache)
     resolve(lyrics)
 })
-
-callHome()

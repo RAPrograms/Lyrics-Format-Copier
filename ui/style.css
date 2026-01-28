@@ -208,7 +208,7 @@ body > form .hint{
 }
 
 .error-icon::after{
-    content: url('circle-alert.svg');
+    content: url('icons/error.svg');
     height: 40%;
     width: 40%;
 }

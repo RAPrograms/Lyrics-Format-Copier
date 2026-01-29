@@ -18,11 +18,11 @@ function loadProcessers(config){
 
     const output = []
 
-    if(config.get("unique") == "on")
-        output.push(new UniqueFilter())
-    
     if(config.get("section_names") == "off")
         output.push(new ChunckFilter("[", "]"))
+
+    if(config.get("unique") == "on")
+        output.push(new UniqueFilter())
 
     if(config.get("back_lyrics") == "off")
         output.push(new ChunckFilter("(", ")"))
@@ -51,12 +51,26 @@ export default function process(content, config){
                 break
         }
         
-        if(line != null)
-            output.push(line)
+        if(line == null)
+            continue
+
+        //Stops consecutive empty lines
+        if(line.replace(" ", "") == "" && output[output.length -1].replace(" ", "") == "")
+            continue
+
+        output.push(line)
     }
 
     for(const processer of processers){
         processer.finish(output)
+    }
+
+    //Removes empty lines after song
+    for(let i=output.length -1; i>0; i--){
+        if(output[i].replace(" ", "") == "")
+            output.pop()
+        else
+            break
     }
 
     return output

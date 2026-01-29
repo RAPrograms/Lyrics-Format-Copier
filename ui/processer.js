@@ -13,9 +13,6 @@ import LinesCondenser from "./processers/Condensor.js"
  * @returns {Array<Processer>}
  */
 function loadProcessers(config){
-    if(config.get("unique") == "on" && config.get("condence") == "on")
-        throw new Error("Enabled processor conflict - Unique vs Line Condensor")
-
     const output = []
 
     if(config.get("section_names") == "off")

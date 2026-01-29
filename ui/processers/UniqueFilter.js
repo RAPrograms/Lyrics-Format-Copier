@@ -6,6 +6,7 @@ export default class UniqueFilter extends Processer{
     #cache
 
     constructor(){
+        super()
         this.#cache = new Set()
     }
 

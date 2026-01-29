@@ -6,6 +6,7 @@ export default class ChunckFilter extends Processer{
     #target
 
     constructor(start, end){
+        super()
         this.#target = [start, end]
     }
 

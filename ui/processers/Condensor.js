@@ -6,6 +6,7 @@ export default class LinesCondenser extends Processer{
     #count
 
     constructor(){
+        super()
         this.#count = 0
     }
 

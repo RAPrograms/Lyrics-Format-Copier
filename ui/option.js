@@ -1,16 +1,25 @@
 customElements.define("processing-option",
     class OptionComponent extends HTMLElement {
         #descriptions
+        #selected
 
         constructor() {
             // Always call super first in constructor
             super();
 
             this.#descriptions = {}
+
+            try {
+                this.#selected = localStorage.getItem(`option-${this.getAttribute("data-name")}`) || this.getAttribute("data-default")
+            } catch (error) {
+                this.#selected = this.getAttribute("data-default")
+            }
         }
 
         onChange(e){
             this.querySelector(".hint").innerText = this.#descriptions[e.target.value]
+            localStorage.setItem(`option-${this.getAttribute("data-name")}`, e.target.value)
+            this.#selected = e.target.value
         }
 
         connectedCallback() {
@@ -37,7 +46,7 @@ customElements.define("processing-option",
                 field.value = attribute.name
                 field.addEventListener("change", (e) => this.onChange(e))
 
-                if(attribute.name == this.getAttribute("data-default"))
+                if(attribute.name == this.#selected)
                     field.checked = true
 
                 this.#descriptions[attribute.name] = attribute.value

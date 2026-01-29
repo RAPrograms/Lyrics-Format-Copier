@@ -1,3 +1,7 @@
+"use strict"
+
+import processer from "./processer.js";
+
 async function pageCall(functionName) {
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -19,11 +23,12 @@ async function pageCall(functionName) {
   }
 }
 
+
 async function processCopy(e){
   e.preventDefault()
 
-  const lyrics = await pageCall("getContent")
-  const config = new FormData(e.target)
+  let lyrics = await pageCall("getContent")
+  lyrics = processer(lyrics, new FormData(e.target))
 
   let output = ""
   

@@ -30,21 +30,39 @@
     <template>
       <form>
         <processing-option
-          data-title="Remove Metadata"
+          data-title="Unique Lyrics"
           data-default="off"
-          data-name="remove_metadata"
+          data-name="unique"
 
-          off="Keeps infomation in brackets"
-          on="Removes infomation in brackets">
+          off="Keeps all lyrics"
+          on="Ensures each line only is outputted once, preventing duplicates">
         </processing-option>
 
         <processing-option
-          data-title="Condense Lines"
+          data-title="Condence Lines"
           data-default="off"
           data-name="condense_lines"
 
-          off="Keeps full version of lyrics"
-          on="Reduces continuis duplicate lines to one with the amount">
+          off="Keeps all lyrics"
+          on="Makes any repeated lines (in a row) singular with a count at the end">
+        </processing-option>
+
+        <processing-option
+          data-title="Section Names"
+          data-default="on"
+          data-name="section_names"
+
+          on="Keeps section names (in square brackets)"
+          off="Removes section names (in square brackets)">
+        </processing-option>
+
+        <processing-option
+          data-title=""
+          data-default="on"
+          data-name="back_lyrics"
+
+          on="Keeps additional lyrics (in round brackets)"
+          off="Removes additional lyrics (in round brackets)">
         </processing-option>
       
 

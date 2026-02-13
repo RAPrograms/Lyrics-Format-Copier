@@ -1,6 +1,6 @@
 # Variables
 LIB_FILE := platform_lib.js
-SRC_DIR := platforms
+SRC_DIR := parsers
 DEST_DIR := .dist
 
 # Map source files to destination files

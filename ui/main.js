@@ -14,7 +14,6 @@ async function pageCall(functionName) {
     if(!response.successful)
       throw Error(response.content)
 
-    console.log("Result from content:", response?.content);
     return response.content;
 
   } catch (error) {

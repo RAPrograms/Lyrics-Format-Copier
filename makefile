@@ -13,7 +13,7 @@ TARGETS := $(patsubst $(SRC_DIR)/%.js,$(DEST_DIR)/$(SRC_DIR)/%.js,$(wildcard $(S
 all: clean prep $(TARGETS)
 	@cp -r ui $(DEST_DIR)/ui
 	@cp manifest.json $(DEST_DIR)/manifest.json
-	@cp icon.svg $(DEST_DIR)/icon.svg
+	@cp icon.png $(DEST_DIR)/icon.png
 	@echo "Build complete. Check the '$(DEST_DIR)' folder."
 
 # Ensures the directory exists after cleaning

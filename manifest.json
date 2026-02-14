@@ -17,6 +17,11 @@
     {
       "matches": ["*://genius.com/*-lyrics"],
       "js": ["/parsers/genius_com.js"]
+    },
+
+    {
+      "matches": ["*://www.azlyrics.com/lyrics/*/*.html"],
+      "js": ["/parsers/azlyrics_com.js"]
     }
   ]
 }

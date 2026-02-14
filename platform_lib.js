@@ -1,11 +1,22 @@
 chrome.runtime.onMessage.addListener((request, sender, send) => {
     switch(request?.action){
         case "supported":
-            send({
-                successful: true,
-                content: `This page is supported`
-            });
-            return false
+            if(typeof dynamicSupportCheck != "function"){
+                send({
+                    successful: true,
+                    content: true
+                });
+                return false
+            }
+
+            ;(async () => {
+                send({
+                    successful: true,
+                    content: await dynamicSupportCheck()
+                });
+            })()
+
+            return true
 
         case "getContent":
             ;(async () => {

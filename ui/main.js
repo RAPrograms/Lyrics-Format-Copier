@@ -60,7 +60,9 @@ const pageLoaded = new Promise(async (resolve, reject) => {
 const pageSupported = new Promise(async(resolve) =>{ 
   await pageLoaded
 
-  resolve((await pageCall("supported")) != null)
+  const result = await pageCall("supported")
+
+  resolve(result != null && result)
 })
 
 window.onload = async() => {

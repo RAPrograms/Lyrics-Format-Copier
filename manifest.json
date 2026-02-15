@@ -22,6 +22,12 @@
     {
       "matches": ["*://www.azlyrics.com/lyrics/*/*.html"],
       "js": ["/parsers/azlyrics_com.js"]
+    },
+
+    {
+      "matches": ["*://open.spotify.com/track/*"],
+      "js": ["/parsers/spotify_com.js"],
+      "run_at": "document_idle"
     }
   ]
 }

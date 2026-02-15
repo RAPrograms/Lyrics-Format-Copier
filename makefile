@@ -1,5 +1,7 @@
 # Variables
-LIB_FILE := platform_lib.js
+HEADER_FILE := lib.js
+FOOTER_FILE := communicator.js
+
 SRC_DIR := parsers
 DEST_DIR := .dist
 
@@ -24,7 +26,8 @@ prep:
 $(DEST_DIR)/$(SRC_DIR)/%.js: $(SRC_DIR)/%.js $(LIB_FILE)
 	@mkdir -p $(dir $@)
 	@echo "Merging $(LIB_FILE) + $< -> $@"
-	@{ cat $<; printf "\n\n"; cat $(LIB_FILE); } > $@
+	@{ cat $(HEADER_FILE); printf "\n\n"; cat $<; printf "\n\n"; cat $(FOOTER_FILE); } > $@
+
 
 # Cleanup
 clean:

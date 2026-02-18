@@ -66,6 +66,12 @@ const pageSupported = new Promise(async(resolve) =>{
 })
 
 window.onload = async() => {
+  document.querySelector("footer > a").addEventListener("click", (e) => {
+    e.preventDefault()
+    window.open(e.target.href)
+    window.close();
+  })
+
   if(!(await pageSupported)){
     document.querySelector("main > :nth-child(1)").setAttribute("class", "error-icon")
     document.querySelector("main > :nth-child(2)").textContent = "Can't Parse This Page"

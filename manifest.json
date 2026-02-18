@@ -28,6 +28,12 @@
       "matches": ["*://open.spotify.com/track/*"],
       "js": ["/parsers/spotify_com.js"],
       "run_at": "document_idle"
+    },
+
+    {
+      "matches": ["*://duckduckgo.com/?q=*"],
+      "js": ["/parsers/duckduckgo_com.js"],
+      "run_at": "document_idle"
     }
   ]
 }
